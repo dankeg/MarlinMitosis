@@ -333,6 +333,8 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
 
     case 'G': switch (parser.codenum) {
 
+      case 300:
+        G0_G1(TERN_(HAS_FAST_MOVES, parser.codenum == 0)); break;
       case 0: case 1:                                             // G0: Fast Move, G1: Linear Move
         G0_G1(TERN_(HAS_FAST_MOVES, parser.codenum == 0)); break;
 
